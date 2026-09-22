@@ -1,1 +1,7 @@
-<Solution />
+<Solution>
+  <Project Path="IdeaForge.API/IdeaForge.API.csproj" />
+  <Project Path="IdeaForge.Application/IdeaForge.Application.csproj" />
+  <Project Path="IdeaForge.Domain/IdeaForge.Domain.csproj" />
+  <Project Path="IdeaForge.Infrastructure/IdeaForge.Infrastructure.csproj" />
+  <Project Path="IdeaForge.Tests/IdeaForge.Tests.csproj" />
+</Solution>

@@ -365,8 +365,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Project docs
+# Project docs (keep local only, do not push to GitHub)
 IdeaForge-TRD.md
+IdeaForge-Frontend-TRD.md
 
 # Local dev settings (real connection strings / secrets - do not push)
 **/appsettings.Development.json
