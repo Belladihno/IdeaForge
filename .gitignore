@@ -368,6 +368,9 @@ FodyWeavers.xsd
 # Project docs
 IdeaForge-TRD.md
 
+# Local dev settings (real connection strings / secrets - do not push)
+**/appsettings.Development.json
+
 # VS Code files
 .vscode/*
 
