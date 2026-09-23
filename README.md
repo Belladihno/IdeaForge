@@ -61,7 +61,7 @@ never a formula.
 - **.NET 8** ASP.NET Core Web API, **Clean Architecture** (Domain → Application → Infrastructure → API)
 - **CQRS via MediatR**, validation via **FluentValidation**, mapping via **Mapster**
 - **EF Core 9 + PostgreSQL (Npgsql)**, Fluent API configuration, code-first migrations
-- **Serilog** logging, **Scalar** API docs, **xUnit + FluentAssertions + NSubstitute** tests
+- **Serilog** logging, **Swagger (Swashbuckle)** API docs, **xUnit + FluentAssertions + NSubstitute** tests
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ dotnet ef database update \
 
 # 3. Run (Development profile)
 dotnet run --project IdeaForge.API/IdeaForge.API.csproj
-# API: http://localhost:5162 · docs: http://localhost:5162/scalar
+# API: http://localhost:5162 · docs: http://localhost:5162/swagger
 
 # 4. Tests
 dotnet test IdeaForge.Tests/IdeaForge.Tests.csproj

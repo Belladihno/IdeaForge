@@ -2,7 +2,6 @@ using IdeaForge.API.Common;
 using IdeaForge.API.Middleware;
 using IdeaForge.Application;
 using IdeaForge.Infrastructure;
-using Scalar.AspNetCore;
 using Serilog;
 using System.Text.Json.Serialization;
 
@@ -17,6 +16,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(o => o.UseInlineDefinitionsForEnums());
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -37,10 +37,14 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapScalarApiReference();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 app.UseCors("Frontend");
 app.MapControllers();
 
