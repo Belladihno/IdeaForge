@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IdeaForge.Application\IdeaForge.Application.csproj" />
     <ProjectReference Include="..\IdeaForge.Domain\IdeaForge.Domain.csproj" />
+    <ProjectReference Include="..\IdeaForge.Infrastructure\IdeaForge.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

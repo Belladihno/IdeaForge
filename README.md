@@ -141,7 +141,27 @@ IdeaForge/
 
 ## Tests
 
-8 tests, all green: formula correctness + boundaries + risk effect (Domain),
+12 tests, all green: formula correctness + boundaries + risk effect (Domain),
 handler saves a correctly scored `Captured` entity via mocked repository
-(Application), validator accepts/rejects (Application). Controllers and
+(Application), validator accepts/rejects (Application), connection-string
+normalization for hosted Postgres URLs (Infrastructure). Controllers and
 repositories are intentionally untested in prototype scope.
+
+## Hosting (Render + Neon)
+
+The API is hosting-ready. Render runs it as a Web Service (`render.yaml`
+blueprint, native `dotnet` runtime, free plan OK); Postgres lives on Neon
+(free tier, no 30-day expiry unlike Render's own free DB).
+
+Hosting adaptations already in the code:
+
+- `PORT` env var drives Kestrel binding (local profiles untouched when unset).
+- `DATABASE_URL` accepts Neon's `postgresql://…?sslmode=require` URL or
+  plain Npgsql key-value; SSL is honored/enforced for hosted databases.
+- EF migrations auto-apply at startup with retries (hosts have no EF CLI;
+  retries cover Neon waking from idle suspend).
+- CORS origins come from `FRONTEND_URLS` (comma-separated; defaults to
+  `http://localhost:5173` locally).
+- HTTPS redirection only runs when `ENABLE_HTTPS_REDIRECT=true` (Render
+  terminates TLS at its proxy — redirecting inside the container would loop).
+- `GET /health` serves host health checks.

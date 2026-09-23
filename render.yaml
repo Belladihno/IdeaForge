@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ideaforge-api
+    runtime: dotnet
+    plan: free
+    buildCommand: dotnet publish IdeaForge.API/IdeaForge.API.csproj -c Release -o out
+    startCommand: dotnet out/IdeaForge.API.dll
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # Set in the Render dashboard after creating the service (never commit secrets):
+      # - Neon dashboard → your project → Connection Details → DIRECT host (not -pooler),
+      #   copy the connection string (it ends with ?sslmode=require).
+      - key: DATABASE_URL
+        sync: false
+      # Public URL of the deployed frontend (comma-separated if several).
+      - key: FRONTEND_URLS
+        sync: false

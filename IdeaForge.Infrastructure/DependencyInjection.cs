@@ -14,7 +14,7 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(PostgresConnectionString.Resolve(configuration)));
 
         services.AddScoped<IIdeaRepository, IdeaRepository>();
 
