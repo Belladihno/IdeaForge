@@ -145,9 +145,3 @@ IdeaForge/
 handler saves a correctly scored `Captured` entity via mocked repository
 (Application), validator accepts/rejects (Application). Controllers and
 repositories are intentionally untested in prototype scope.
-
-## Roadmap (out of scope)
-
-- Roles/auth (admin-only status changes)
-- React frontend (see local `IdeaForge-Frontend-TRD.md`, kept out of git)
-- Pagination, score editing, audit history, OpenAPI JSON on .NET 9+
