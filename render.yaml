@@ -1,10 +1,8 @@
 services:
   - type: web
     name: ideaforge-api
-    runtime: dotnet
+    runtime: docker
     plan: free
-    buildCommand: dotnet publish IdeaForge.API/IdeaForge.API.csproj -c Release -o out
-    startCommand: dotnet out/IdeaForge.API.dll
     healthCheckPath: /health
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
